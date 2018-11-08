@@ -56,7 +56,7 @@
         humidity: null,
         show: false,
         key: '863668499362fb4884ebd97229f3b26b',
-        url: 'http://api.openweathermap.org/data/2.5/weather'
+        url: 'https://api.openweathermap.org/data/2.5/weather'
       }
     },
     methods: {
