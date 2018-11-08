@@ -27,24 +27,43 @@
             <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title v-text="title"></v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-menu offset-y>
+            <v-speed-dial
+                    v-model="fab"
+                    top
+                    right
+                    direction="bottom"
+                    open-on-hover
+                    transition="slide-y-transition"
+            >
                 <v-btn
                         slot="activator"
-                        flat
+                        v-model="fab"
+                        color="blue darken-2"
+                        dark
+                        fab
                 >
-                    {{email}}
+                    <v-icon>account_circle</v-icon>
+                    <v-icon>close</v-icon>
                 </v-btn>
-                <v-list>
-                    <v-list-tile @click="logout">
-                        <v-list-tile-title>logout</v-list-tile-title>
-                    </v-list-tile>
-                </v-list>
-            </v-menu>
-            <v-btn
-                    icon
-            >
-                <v-icon>phone</v-icon>
-            </v-btn>
+                <v-btn
+                        fab
+                        dark
+                        small
+                        color="green"
+                        to="/account"
+                >
+                    <v-icon>fas fa-pen</v-icon>
+                </v-btn>
+                <v-btn
+                        fab
+                        dark
+                        small
+                        color="red"
+                        @click="logout"
+                >
+                    <v-icon>fas fa-sign-out-alt</v-icon>
+                </v-btn>
+            </v-speed-dial>
         </v-toolbar>
         <v-content>
             <v-container>
@@ -59,19 +78,23 @@
 
 <script>
   export default {
+    name: 'default',
+    middleware: 'authenticated',
     data () {
       return {
         clipped: true,
         drawer: true,
         fixed: false,
+        fab: false,
         email: '',
         items: [
-          { icon: 'apps', title: 'Welcome', to: '/welcome' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+          { icon: 'fas fa-home', title: 'Welcome', to: '/welcome' },
+          { icon: 'fas fa-quote-right', title: 'Inspire', to: '/inspire' },
+          { icon: 'fas fa-sun', title: 'Weather', to: '/weather' }
         ],
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: 'Nuxt showcase App'
       }
     },
     methods: {
@@ -83,11 +106,6 @@
     watch: {
       name (newEmail) {
         localStorage.email = newEmail
-      }
-    },
-    beforeMount () {
-      if (!localStorage.email) {
-        this.$router.push('/')
       }
     },
     mounted () {

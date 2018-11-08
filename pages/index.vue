@@ -6,7 +6,7 @@
                     <v-flex xs12 sm8 md4>
                         <v-card class="elevation-12">
                             <v-toolbar dark color="primary">
-                                <v-toolbar-title>Login form</v-toolbar-title>
+                                <v-toolbar-title>Nuw showcase App</v-toolbar-title>
                             </v-toolbar>
                             <v-card-text>
                                 <v-form>
@@ -34,11 +34,6 @@
 
   export default {
     layout: 'login',
-    beforeMount () {
-      if (localStorage.email) {
-        this.$router.push('/welcome')
-      }
-    },
     data: () => ({
       drawer: null,
       email: '',
@@ -48,6 +43,7 @@
       signin: function () {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user => {
           localStorage.email = this.email
+          localStorage.loggedIn = true
           this.$router.push('/welcome')
         }).catch(e => {
           alert(e.message)

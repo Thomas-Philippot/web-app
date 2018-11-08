@@ -8,10 +8,6 @@
 <script>
   export default {
     name: 'Login',
-    beforeMount () {
-      if (localStorage.userName) {
-        // this.$router.replace('/home')
-      }
-    }
+    middleware: 'login'
   }
 </script>
