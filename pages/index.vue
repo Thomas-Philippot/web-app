@@ -6,7 +6,7 @@
                     <v-flex xs12 sm8 md4>
                         <v-card class="elevation-12">
                             <v-toolbar dark color="primary">
-                                <v-toolbar-title>Nuw showcase App</v-toolbar-title>
+                                <v-toolbar-title>Nuxt showcase App</v-toolbar-title>
                             </v-toolbar>
                             <v-card-text>
                                 <v-form>
