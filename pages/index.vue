@@ -31,6 +31,7 @@
 
 <script>
   import firebase from 'firebase'
+  import { userRef } from '~/plugins/firebase'
 
   export default {
     layout: 'login',
@@ -51,6 +52,7 @@
       },
       signup: function () {
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {
+          userRef.push({ name: 'name', email: this.email, avatar: 'https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png' })
         }).catch(e => {
           alert(e.message)
         })

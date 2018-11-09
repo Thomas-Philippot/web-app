@@ -8,6 +8,11 @@ var config = {
   storageBucket: 'webapp-c8c7a.appspot.com',
   messagingSenderId: '995955347951'
 }
+let app = null
 if (!firebase.apps.length) {
-  firebase.initializeApp(config)
+  app = firebase.initializeApp(config)
 }
+
+export const db = app.database()
+export const msgRef = db.ref('messages')
+export const userRef = db.ref('users')

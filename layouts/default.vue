@@ -90,7 +90,8 @@
         items: [
           { icon: 'fas fa-home', title: 'Welcome', to: '/welcome' },
           { icon: 'fas fa-quote-right', title: 'Inspire', to: '/inspire' },
-          { icon: 'fas fa-sun', title: 'Weather', to: '/weather' }
+          { icon: 'fas fa-sun', title: 'Weather', to: '/weather' },
+          { icon: 'fas fa-comments', title: 'Chat', to: '/chat' }
         ],
         right: true,
         rightDrawer: false,
