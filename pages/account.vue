@@ -8,6 +8,7 @@
         <img :src="account.avatar" alt="icon profile">
       </v-avatar>
       <h1>{{ account.name }}</h1>
+      <p>{{ account.email }}</p>
       <v-btn
               color="primary"
               dark
@@ -29,12 +30,6 @@
                       :rules="nameRules"
                       :counter="10"
                       label="Name"
-                      required
-              ></v-text-field>
-              <v-text-field
-                      v-model="account.email"
-                      :rules="emailRules"
-                      label="E-mail"
                       required
               ></v-text-field>
           </v-card-text>
