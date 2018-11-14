@@ -29,7 +29,7 @@
                             @click="toggle(item, index)"
                     >
                         <v-list-tile-avatar>
-                            <img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png">
+                            <img :src="item.avatar">
                         </v-list-tile-avatar>
 
                         <v-list-tile-content>
@@ -93,7 +93,7 @@
         })
       },
       sendMessage () {
-        msgRef.push({ name: 'test', message: this.message, like: false })
+        msgRef.push({ message: this.message, like: false, avatar: localStorage.avatar })
         this.getMessages()
         this.message = ''
       },

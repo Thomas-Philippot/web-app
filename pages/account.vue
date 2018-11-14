@@ -12,6 +12,7 @@
       <v-btn
               color="primary"
               dark
+              :disabled="!edit"
               @click="dialog = true"
       >
         Edit
@@ -57,10 +58,12 @@
   export default {
     data: () => ({
       dialog: false,
+      edit: true,
       id: '',
       valid: true,
+      results: [],
       account: {
-        image: '',
+        avatar: '',
         name: '',
         email: ''
       },
@@ -78,9 +81,17 @@
     },
     methods: {
       getAccount () {
+        this.edit = false
+        this.account.email = localStorage.email
+        this.account.avatar = localStorage.avatar
         axios.get('https://webapp-c8c7a.firebaseio.com/users.json?email=' + localStorage.email).then(response => {
-          this.account = response.data[Object.keys(response.data)[0]]
-          this.id = Object.getOwnPropertyNames(response.data)[0]
+          for (let i = 0; i < Object.keys(response.data).length; i++) {
+            if (response.data[Object.keys(response.data)[i]].email === localStorage.email) {
+              this.account = response.data[Object.keys(response.data)[i]]
+              this.id = Object.getOwnPropertyNames(response.data)[i]
+              this.edit = true
+            }
+          }
         }).catch(e => {
           console.log(e)
         })
@@ -89,11 +100,6 @@
         if (this.$refs.form.validate()) {
           this.dialog = false
           axios.put('https://webapp-c8c7a.firebaseio.com/users/' + this.id + '/name.json', '"' + this.account.name + '"').then(response => {
-            console.log('Account updated')
-          }).catch(e => {
-            console.log(e)
-          })
-          axios.put('https://webapp-c8c7a.firebaseio.com/users/' + this.id + '/email.json', '"' + this.account.email + '"').then(response => {
             console.log('Account updated')
           }).catch(e => {
             console.log(e)

@@ -19,6 +19,8 @@
                             <v-card-actions>
                                 <v-btn color="secondary" @click="signup">Sign up</v-btn>
                                 <v-spacer></v-spacer>
+                                <v-btn outline fab @click="googleSignIn" color="#4285F4"><v-icon>fab fa-google</v-icon></v-btn>
+                                <v-spacer></v-spacer>
                                 <v-btn color="primary" @click="signin">Login</v-btn>
                             </v-card-actions>
                         </v-card>
@@ -36,19 +38,39 @@
   export default {
     layout: 'login',
     data: () => ({
-      drawer: null,
       email: '',
-      password: ''
+      password: '',
+      provider: null
     }),
+    watch: {
+      provider: function (newProvider) {
+        firebase.auth().getRedirectResult().then(function (result) {
+          localStorage.email = result.user.email
+          localStorage.loggedIn = true
+          localStorage.avatar = result.user.photoURL
+          this.$router.push('/welcome')
+        }).catch(error => {
+          console.log(error)
+        })
+      }
+    },
+    created () {
+    },
     methods: {
       signin: function () {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(user => {
           localStorage.email = this.email
           localStorage.loggedIn = true
+          localStorage.avatar = 'https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png'
           this.$router.push('/welcome')
         }).catch(e => {
           alert(e.message)
         })
+      },
+      googleSignIn () {
+        this.provider = new firebase.auth.GoogleAuthProvider()
+        firebase.auth().signInWithRedirect(this.provider)
+        this.$router.replace('/')
       },
       signup: function () {
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {

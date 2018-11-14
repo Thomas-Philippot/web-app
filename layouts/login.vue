@@ -1,6 +1,6 @@
 <template>
     <v-flex>
-        <vue-snotify></vue-snotify>
+        <!-- <vue-snotify></vue-snotify> -->
         <nuxt/>
     </v-flex>
 </template>
