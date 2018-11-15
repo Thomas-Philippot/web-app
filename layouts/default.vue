@@ -89,9 +89,9 @@
         email: '',
         items: [
           { icon: 'fas fa-home', title: 'Welcome', to: '/welcome' },
-          { icon: 'fas fa-quote-right', title: 'Inspire', to: '/inspire' },
+          { icon: 'fas fa-clipboard', title: 'Guide', to: '/guide' },
           { icon: 'fas fa-sun', title: 'Weather', to: '/weather' },
-          { icon: 'fas fa-comments', title: 'Chat', to: '/chat' }
+          { icon: 'fas fa-comments', title: 'Forum', to: '/forum' }
         ],
         right: true,
         rightDrawer: false,
