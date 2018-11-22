@@ -1,8 +1,8 @@
 <template>
-    <v-flex>
-        <!-- <vue-snotify></vue-snotify> -->
+    <v-app>
+        <vue-snotify></vue-snotify>
         <nuxt/>
-    </v-flex>
+    </v-app>
 </template>
 
 <script>

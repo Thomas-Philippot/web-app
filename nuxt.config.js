@@ -18,15 +18,13 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.5.0/css/all.css' }
     ]
   },
-  plugins: ['~/plugins/vuetify.js', '~/plugins/firebase.js'],
+  plugins: ['~/plugins/vuetify.js', '~/plugins/firebase.js', '~/plugins/vue-snotify'],
   css: ['~/assets/style/app.styl'],
   /*
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  modules: [
-    '@nuxtjs/axios'
-  ],
+  modules: ['@nuxtjs/axios'],
   /*
   ** Build configuration
   */
@@ -34,6 +32,12 @@ module.exports = {
     transpile: [/^vuetify/],
     plugins: [
       new VuetifyLoaderPlugin()
+    ],
+    vendor: [
+      'vue-snotify'
+    ],
+    modules: [
+      '@nuxtjs/axios', 'vue-snotify'
     ],
     extractCSS: true,
     extend (config, ctx) {

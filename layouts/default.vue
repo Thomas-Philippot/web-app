@@ -32,7 +32,6 @@
                     top
                     right
                     direction="bottom"
-                    open-on-hover
                     transition="slide-y-transition"
             >
                 <v-btn
