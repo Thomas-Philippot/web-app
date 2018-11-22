@@ -36,6 +36,7 @@
           </v-layout>
         </v-card-text>
       </v-card>
+      <p>{{ eror}}</p>
     </v-flex>
   </v-layout>
 </template>
@@ -74,8 +75,15 @@
           this.humidity = response.data.main.humidity
           this.weatherDescription = response.data.weather[0].description
           this.show = true
-        }).catch(errors => {
-          console.log(errors)
+        }).catch(e => {
+          if (e.response.status === 400) {
+            this.$snotify.error('You must enter a city name')
+          }
+          if (e.response.status === 404) {
+            this.$snotify.error('The city search does not exist')
+          } else {
+            this.$snotify.error(e.message)
+          }
         })
       }
     }

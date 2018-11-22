@@ -93,16 +93,16 @@
             }
           }
         }).catch(e => {
-          console.log(e)
+          this.$snotify.error(e.message)
         })
       },
       editAccount () {
         if (this.$refs.form.validate()) {
           this.dialog = false
-          axios.put('https://webapp-c8c7a.firebaseio.com/users/' + this.id + '/name.json', '"' + this.account.name + '"').then(response => {
-            console.log('Account updated')
+          axios.put('https://webapp-c8c7a.firebaseio.com/users/' + this.id + '/name.json', '"' + this.account.name + '"').then(() => {
+            this.$snotify.success('Account updated !')
           }).catch(e => {
-            console.log(e)
+            this.$snotify.error(e.message)
           })
         }
       }

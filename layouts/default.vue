@@ -66,6 +66,7 @@
         </v-toolbar>
         <v-content>
             <v-container>
+                <vue-snotify></vue-snotify>
                 <nuxt/>
             </v-container>
         </v-content>
