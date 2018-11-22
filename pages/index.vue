@@ -66,14 +66,6 @@
         v => /.+@.+/.test(v) || 'E-mail must be valid'
       ]
     }),
-    created () {
-      this.loggedIn = setInterval(() => {
-        if (localStorage.loggedIn) {
-          clearInterval(this.loggedIn)
-          this.$router.push('/welcome')
-        }
-      }, 1000)
-    },
     methods: {
       signin: function () {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
@@ -87,10 +79,11 @@
       },
       googleSignIn () {
         this.provider = new firebase.auth.GoogleAuthProvider()
-        firebase.auth().signInWithPopup(this.provider).then(function (result) {
+        firebase.auth().signInWithPopup(this.provider).then(result => {
           localStorage.avatar = result.user.photoURL
           localStorage.email = result.user.email
           localStorage.loggedIn = true
+          this.$router.push('/welcome')
         }).catch(e => {
           this.$snotify.error(e.message)
           console.log(e)
