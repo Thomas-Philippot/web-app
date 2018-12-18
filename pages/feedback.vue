@@ -1,11 +1,7 @@
 <template>
     <v-app id="inspire">
         <v-container fluid grid-list-md>
-            <ul>
-                <li v-for="message of messages">
-                    {{message}}
-                </li>
-            </ul>
+            <h2 class="headline mb-2 text-md-center">Let me know your feedbacks about this showcase website</h2>
             <v-card>
             <v-list two-line>
                 <template v-for="(item, index) in items">

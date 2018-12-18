@@ -3,9 +3,7 @@
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-card-title primary-title>
-          <div>
             <h3 class="headline mb-0">Nuxt showcase guide</h3>
-          </div>
         </v-card-title>
         <v-card-text>
           <p>Here are all the things this app is able to do</p>
@@ -38,7 +36,8 @@
       return {
         items: [
           { icon: 'fas fa-sun', iconClass: 'error', title: 'Wheather', subtitle: 'Display the weather by searching a city' },
-          { icon: 'fas fa-comments', iconClass: 'warning', title: 'Forum', subtitle: 'Wanna talk about this app to other users ?' }
+          { icon: 'fas fa-comments', iconClass: 'warning', title: 'Forum', subtitle: 'Post your feedback on this page' },
+          { icon: 'fas fa-newspaper', iconClass: 'primary', title: 'News', subtitle: 'News About selected category' }
         ]
       }
     }
