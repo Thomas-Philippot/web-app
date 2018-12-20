@@ -33,9 +33,6 @@ module.exports = {
     plugins: [
       new VuetifyLoaderPlugin()
     ],
-    vendor: [
-      'vue-snotify'
-    ],
     modules: [
       '@nuxtjs/axios', 'vue-snotify'
     ],

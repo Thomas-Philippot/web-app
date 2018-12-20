@@ -1,16 +1,22 @@
 <template>
     <v-app>
-        <v-select
-                :items="items"
-                label="Standard"
-                v-model="category"
-        ></v-select>
-        <v-btn @click="getArticles">Search</v-btn>
+        <v-flex lg3 md6 sm12>
+            <v-select
+                    :items="items"
+                    label="Category"
+                    v-model="category"
+            ></v-select>
+            <v-btn @click="getArticles">Search</v-btn>
+        </v-flex>
         <v-layout
                 row
                 wrap
                 align-center
                 class="container">
+            <v-flex v-if="noData" md12>
+                <h1 class="display-2 text-lg-center">No data</h1>
+            <p class="title text-sm-center">This page has made to many API calls and has been temporary blocked</p>
+            </v-flex>
             <v-flex
                     v-for="(article, id) in articles"
                     :key="id"
@@ -59,7 +65,8 @@
       return {
         articles: [],
         items: ['VueJs', 'développeur freelance', 'Java', 'npm', 'Bitcoin'],
-        category: 'VueJs'
+        category: 'VueJs',
+        noData: false
       }
     },
     created () {
@@ -67,8 +74,8 @@
     },
     methods: {
       getArticles () {
-        axios.get('https://newsapi.org/v2/everything?q=' + this.category + '&language=fr&from=2018-11-18&sortBy=publishedAt&apiKey=8736d01c3e3a4595a6a674ec46264943').then(response => {
-          console.log(response.data.articles)
+        axios.get('https://newsapi.org/v2/everything?q=' + this.category + '&language=fr&sortBy=popularity&apiKey=8736d01c3e3a4595a6a674ec46264943').then(response => {
+          console.log(response)
           this.articles = response.data.articles
         }).catch(e => {
           console.log(e)

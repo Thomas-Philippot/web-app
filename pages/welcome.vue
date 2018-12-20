@@ -25,7 +25,7 @@
             <v-avatar
                     :size="50"
             >
-              <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/20915442_1995801463988796_2991472233340304141_n.jpg?_nc_cat=0&oh=5bcf157a380176c6ce648f4b5499ee25&oe=5C0A496C" alt="avatar">
+              <img src="https://avatars1.githubusercontent.com/u/36050256?s=400&u=12b0099235beb8827f59876708835c92a297034a&v=4" alt="avatar">
             </v-avatar>
           </div>
           <hr class="my-3">
