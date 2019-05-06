@@ -38,7 +38,7 @@
       return {
         items: [
           { icon: 'fas fa-sun', iconClass: 'error', title: 'Wheather', subtitle: 'Display the weather by searching a city' },
-          { icon: 'fas fa-comments', iconClass: 'warning', title: 'Chat', subtitle: 'Real time chat with firebase' }
+          { icon: 'fas fa-comments', iconClass: 'warning', title: 'Forum', subtitle: 'Wanna talk about this app to other users ?' }
         ]
       }
     }
