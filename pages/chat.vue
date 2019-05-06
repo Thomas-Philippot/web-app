@@ -11,7 +11,7 @@
                 <template v-for="(item, index) in items">
                     <v-subheader
                             v-if="item.header"
-                            :key="item.header"
+                            :key="index"
                     >
                         {{ message.header }}
                     </v-subheader>
@@ -26,7 +26,7 @@
                             v-else
                             :key="item.message"
                             avatar
-                            @click="toggle(item, index)"
+                            @click="toggle(item)"
                     >
                         <v-list-tile-avatar>
                             <img :src="item.avatar">
@@ -75,12 +75,10 @@
 
 <script>
   import { msgRef } from '~/plugins/firebase'
-  import axios from 'axios'
 
   export default {
     data: () => ({
       message: '',
-      selected: [0],
       items: []
     }),
     created () {
@@ -88,21 +86,17 @@
     },
     methods: {
       getMessages () {
-        axios.get('https://webapp-c8c7a.firebaseio.com/messages.json').then(response => {
-          this.items = response.data
+        msgRef.on('value', (response) => {
+          this.items = response.val()
         })
       },
       sendMessage () {
         msgRef.push({ message: this.message, like: false, avatar: localStorage.avatar })
-        this.getMessages()
         this.message = ''
       },
-      toggle (item, index) {
+      toggle (item) {
         item.like = !item.like
-        axios.put('https://webapp-c8c7a.firebaseio.com/messages/' + index + '/like.json', item.like).then(response => {
-        }).catch(e => {
-          console.log(e)
-        })
+        msgRef.set(this.items)
       }
     }
   }

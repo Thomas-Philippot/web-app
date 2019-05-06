@@ -91,7 +91,7 @@
           { icon: 'fas fa-home', title: 'Welcome', to: '/welcome' },
           { icon: 'fas fa-clipboard', title: 'Guide', to: '/guide' },
           { icon: 'fas fa-sun', title: 'Weather', to: '/weather' },
-          { icon: 'fas fa-comments', title: 'Forum', to: '/forum' }
+          { icon: 'fas fa-comments', title: 'chat', to: '/chat' }
         ],
         right: true,
         rightDrawer: false,
